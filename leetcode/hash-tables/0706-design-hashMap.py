@@ -1,7 +1,7 @@
 class MyHashMap(object):
 
     def __init__(self):
-        self.hashMap = [None] * 1000001
+        self.hashMap = [None] * 10001
 
     def __hash(self, key):
         hash = key % len(self.hashMap)

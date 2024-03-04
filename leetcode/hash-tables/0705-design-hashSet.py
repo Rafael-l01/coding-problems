@@ -1,7 +1,7 @@
 class MyHashSet(object):
 
     def __init__(self):
-        self.hashSet = [None] * 1000001
+        self.hashSet = [None] * 10001
 
     def __hash(self, key):
         hash = key % len(self.hashSet)
