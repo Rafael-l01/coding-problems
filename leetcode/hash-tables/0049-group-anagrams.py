@@ -50,7 +50,6 @@ class Solution1:
             for i, group in enumerate(anagramsWithMap):
                 if len(group[0]["s"]) == len(str):
                     if group[0]["map"] == strMap:
-                        group.append(str)
                         anagrams[i].append(str)
                         wasAdded = True
                         break
