@@ -93,3 +93,33 @@ class Solution3:
 
         head = before
         return head
+
+
+# first recursive solution
+class Solution:
+    def __reverseList(self, currentNode):
+        if currentNode == None or currentNode.next == None:
+            return (currentNode, currentNode)
+
+        (after, newHead) = self.__reverseList(currentNode.next)
+        after.next = currentNode
+        currentNode.next = None
+        return (currentNode, newHead)
+
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        (oldHead, newHead) = self.__reverseList(head)
+        return newHead
+
+
+# second recursive solution
+# will always return the last node as newHead, and use the actual head(current node) to access the next one
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head == None or head.next == None:
+            return head
+
+        newHead = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+
+        return newHead
