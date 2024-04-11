@@ -45,6 +45,7 @@ class Solution:
             if target == nums[middle]:
                 return middle
 
+            # if middle element is in the left sorted portion of the array
             if nums[middle] > lastElement:
                 if target > nums[middle]:
                     left = middle + 1
@@ -53,6 +54,7 @@ class Solution:
                         left = middle + 1
                     else:
                         right = middle - 1
+            # if middle element is in the right sorted portion of the array
             else:
                 if target < nums[middle]:
                     right = middle - 1
