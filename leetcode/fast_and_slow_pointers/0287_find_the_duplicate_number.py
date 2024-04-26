@@ -38,7 +38,7 @@
 from typing import List
 
 
-# time complexity O(n)
+# time complexity O(n), space complexity 0(1)
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
         slow = nums[0]

@@ -76,12 +76,13 @@ class Solution:
         return maxSum
 
 
-# second solution
+# second solution, O(n) time complexity and O(1) space complexity
 class Solution2:
     def pairSum(self, head: Optional[ListNode]) -> int:
         slow, fast = head, head
         before = None
 
+        # reverse first half of the list
         while fast and fast.next:
             fast = fast.next.next
 
