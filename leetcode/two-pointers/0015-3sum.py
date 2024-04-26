@@ -50,7 +50,7 @@ class Solution:
         return result
 
 
-# fix one number, and solve two sum problem with rest of array for each fixed i, achieving O(n^2) complexity
+# fix one number, and solve two sum problem with rest of array for each fixed i, achieving O(n^2) time complexity and O(n) space complexity
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         result = set()
@@ -62,8 +62,63 @@ class Solution:
                     triplet = [nums[i], nums[j], nums[k]]
                     triplet.sort()
                     result.add(tuple(triplet))
+                else:
+                    remaining = 0 - (nums[i] + nums[j])
+                    remainings[remaining] = j
 
-                remaining = 0 - (nums[i] + nums[j])
-                remainings[remaining] = j
+        return result
+
+
+# fix one number, and use two pointer technique to achieve O(nlogn + n^2) time complexity and O(1) space complexity
+class Solution3:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        result = set()
+        nums.sort()
+
+        for i in range(len(nums) - 2):
+            left = i + 1
+            right = len(nums) - 1
+
+            while left < right:
+                sum = nums[left] + nums[right] + nums[i]
+                if sum == 0:
+                    result.add(tuple([nums[left], nums[right], nums[i]]))
+                    left += 1
+                elif sum < 0:
+                    left += 1
+                else:
+                    right -= 1
+
+        return result
+
+
+# this solution is same as third, but don't consider duplicates for first position when looping through the array
+# and for the left and right pointer, so, in this case we don't need to use a set to save the results,
+# and don't need to convert the triplets to tuples to add to set, so is more effective because of it too
+class Solution4:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        result = []
+        nums.sort()
+
+        for i in range(len(nums) - 2):
+            if i > 0 and nums[i - 1] == nums[i]:
+                continue
+
+            left = i + 1
+            right = len(nums) - 1
+
+            while left < right:
+                sum = nums[left] + nums[right] + nums[i]
+                if sum == 0:
+                    result.append([nums[i], nums[left], nums[right]])
+                    left += 1
+
+                    # this is optional too, just to avoid duplicates
+                    while nums[left] == nums[left - 1] and left < right:
+                        left += 1
+                elif sum < 0:
+                    left += 1
+                else:
+                    right -= 1
 
         return result
