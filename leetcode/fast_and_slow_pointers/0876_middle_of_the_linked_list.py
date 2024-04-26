@@ -47,3 +47,19 @@ class Solution:
             fast = fast.next.next
 
         return slow
+
+
+# if we wanted first node of the middle in even length lists, just initialize fast as the second node of list, and move then as usual
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return None
+
+        slow = head
+        fast = head.next
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow
