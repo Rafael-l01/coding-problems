@@ -113,7 +113,6 @@ class Solution4:
                     result.append([nums[i], nums[left], nums[right]])
                     left += 1
 
-                    # this is optional too, just to avoid duplicates
                     while nums[left] == nums[left - 1] and left < right:
                         left += 1
                 elif sum < 0:
