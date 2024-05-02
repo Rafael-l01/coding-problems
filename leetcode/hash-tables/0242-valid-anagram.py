@@ -22,6 +22,9 @@
 # Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
 
 
+import collections
+
+
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s) == len(t):
@@ -41,5 +44,21 @@ class Solution:
 
             if mapS == mapT:
                 return True
+
+        return False
+
+
+# time complexity O(n), space complexity O(n)
+class Solution2:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) == len(t):
+            mapS = collections.defaultdict(int)
+            mapT = collections.defaultdict(int)
+
+            for i in range(len(s)):
+                mapS[s[i]] += 1
+                mapT[t[i]] += 1
+
+            return mapS == mapT
 
         return False
