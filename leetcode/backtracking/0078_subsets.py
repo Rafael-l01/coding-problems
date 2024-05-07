@@ -46,7 +46,7 @@ class Solution:
         return subsets
 
 
-# dfs on state space tree
+# dfs on state space tree, time complexity O(n*2^n)
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         allSubsets = []
